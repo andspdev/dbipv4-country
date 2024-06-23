@@ -10,8 +10,8 @@ if (isset($_POST['submit']))
     $ip_val = strip_tags($_POST['ip_val']);
     $data_country = get_ip_country($ip_val);
 
-    if (!isValidIPv4($ip_val))
-        $msg_error = '<div class="invalid-feedback">Alamat IP tidak valid.</div>';
+    if (isLocalIP($ip_val) || !isValidIPv4($ip_val))
+        $msg_error = '<div class="invalid-feedback">Silakan masukan alamat IPv4 publik.</div>';
 
     elseif ($data_country == '')
         $msg_error = '<div class="invalid-feedback">Tidak dapat menemukan IP Address dari Anda.</div>';
@@ -32,6 +32,7 @@ if (isset($_POST['submit']))
         .content {
             margin: 6em auto;
             max-width: 700px;
+            padding: 10px;
         }
     </style>
 </head>

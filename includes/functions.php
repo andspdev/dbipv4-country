@@ -44,3 +44,25 @@ function isIPLocalhost($ip)
 function isValidIPv4($ip) {
     return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
 }
+
+function isLocalIP($ip) {
+    $ipLong = ip2long($ip);
+    
+    $privateRanges = [
+        ['10.0.0.0', '10.255.255.255'],
+        ['172.16.0.0', '172.31.255.255'],
+        ['192.168.0.0', '192.168.255.255'],
+        ['127.0.0.0', '127.255.255.255']
+    ];
+
+    foreach ($privateRanges as $range) {
+        $rangeStart = ip2long($range[0]);
+        $rangeEnd = ip2long($range[1]);
+        
+        if ($ipLong >= $rangeStart && $ipLong <= $rangeEnd) {
+            return true;
+        }
+    }
+    
+    return false;
+}
