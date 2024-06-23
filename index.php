@@ -85,7 +85,7 @@ if (isset($_POST['submit']))
                                 <span class="fw-bold">IP Address</span>
                             </div>
                             <div class="col-md-9">
-                                <?=$data_country['ip']?>
+                                <?=htmlspecialchars($data_country['ip'])?>
                             </div>
                         </div>
 
@@ -94,7 +94,7 @@ if (isset($_POST['submit']))
                                 <span class="fw-bold">Kode Negara</span>
                             </div>
                             <div class="col-md-9">
-                                <?=($data_country['kode'] ?? '-')?>
+                                <?=htmlspecialchars($data_country['kode'] ?? '-')?>
                             </div>
                         </div>
 
@@ -103,7 +103,7 @@ if (isset($_POST['submit']))
                                 <span class="fw-bold">Negara</span>
                             </div>
                             <div class="col-md-9">
-                                <?=($data_country['negara'] ?? '-')?>
+                                <?=htmlspecialchars($data_country['negara'] ?? '-')?>
                             </div>
                         </div>
 
@@ -157,7 +157,7 @@ if (isset($_POST['submit']))
                                 <span class="fw-bold">Kode Negara</span>
                             </div>
                             <div class="col-md-9">
-                                <?=($get_country['kode'] ?? '-')?>
+                                <?=htmlspecialchars($get_country['kode'] ?? '-')?>
                             </div>
                         </div>
 
@@ -166,7 +166,7 @@ if (isset($_POST['submit']))
                                 <span class="fw-bold">Negara</span>
                             </div>
                             <div class="col-md-9">
-                                <?=($get_country['negara'] ?? '-')?>
+                                <?=htmlspecialchars($get_country['negara'] ?? '-')?>
                             </div>
                         </div>
 
