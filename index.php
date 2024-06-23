@@ -47,7 +47,7 @@ if (isset($_POST['submit']))
                 <form method="post" class="text-center">
                     <div class="mb-3">
                         <label class="form-label fw-bold">Masukan IP Address</label>
-                        <input type="text" class="form-control <?=isset($msg_error) ? ' is-invalid' : ''?>" placeholder="<?=$ip_val ?? $ip_addr?>" value="<?=$ip_val ?? $ip_addr?>" name="ip_val" />
+                        <input type="text" class="form-control <?=isset($msg_error) ? ' is-invalid' : ''?>" placeholder="<?=$ip_val ?? $ip_addr?>" value="<?=$ip_val ?? ''?>" name="ip_val" />
                         <?=($msg_error ?? '')?>
                     </div>
                     <button class="btn btn-primary" name="submit">Submit</button>
@@ -122,7 +122,7 @@ if (isset($_POST['submit']))
             <hr/>
 
             <div class="my-5">
-                <h4>Alamat IP Kamu</h4>
+                <h4>Negara dari IP Kamu</h4>
 
                 <?php if (isIPLocalhost($ip_addr)): ?>
                     <div class="alert alert-danger my-4">
