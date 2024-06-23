@@ -10,7 +10,7 @@ if (isset($_POST['submit']))
     $ip_val = strip_tags($_POST['ip_val']);
     $data_country = get_ip_country($ip_val);
 
-    if (!filter_var($ip_val, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4))
+    if (!isValidIPv4($ip_val))
         $msg_error = '<div class="invalid-feedback">Alamat IP tidak valid.</div>';
 
     elseif ($data_country == '')
@@ -45,9 +45,14 @@ if (isset($_POST['submit']))
                 </div>
     
                 <form method="post" class="text-center">
+                    <?php
+
+                    $valid_input_ip = isset($ip_val) && isValidIPv4($ip_val);
+
+                    ?>
                     <div class="mb-3">
                         <label class="form-label fw-bold">Masukan IP Address</label>
-                        <input type="text" class="form-control <?=isset($msg_error) ? ' is-invalid' : ''?>" placeholder="<?=$ip_val ?? $ip_addr?>" value="<?=$ip_val ?? ''?>" name="ip_val" />
+                        <input type="text" class="form-control <?=isset($msg_error) ? ' is-invalid' : ''?>" placeholder="<?=$valid_input_ip ? $ip_val : $ip_addr?>" value="<?=$valid_input_ip ? $ip_val : ''?>" name="ip_val" />
                         <?=($msg_error ?? '')?>
                     </div>
                     <button class="btn btn-primary" name="submit">Submit</button>

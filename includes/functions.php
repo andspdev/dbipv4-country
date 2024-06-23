@@ -40,3 +40,7 @@ function isIPLocalhost($ip)
 
     return $ip === $serverIpv4 || $ip === $serverIpv6;
 }
+
+function isValidIPv4($ip) {
+    return filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4);
+}
